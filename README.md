@@ -36,7 +36,9 @@ level10.conf
 
 ### Networking concepts studied
 
-This project covers the following concepts, each with a real-world example for better understanding of the OSI model:
+#### **OSI Model Layers**
+
+The OSI (Open Systems Interconnection) model is a 7-layer framework that describes how data travels from one device to another across a network, from the physical cable all the way up to the application you're using. Each layer has a specific job, and understanding them helps explain *why* networks work the way they do.
 
 | Layer | Name | Real-world example |
 |-------|------|--------------------|
@@ -48,11 +50,29 @@ This project covers the following concepts, each with a real-world example for b
 | 2 | Data Link | An Ethernet switch reading MAC addresses on your LAN |
 | 1 | Physical | Your Ethernet cable plugged into your PC |
 
-Additional concepts covered:
+#### **TCP/IP Addressing and Subnetting**
 
-- **TCP/IP addressing and subnetting:** Designing IP address schemes, calculating subnet masks, and dividing networks into subnets.
-- **Default gateways and routing:** Configuring hosts to send traffic outside their local subnet through a gateway, and writing static routes on routers.
-- **Routers and switches:** Placing Layer 3 devices (routers) between subnets and Layer 2 devices (switches) within subnets.
+Every device on a network needs a unique **IP address** so other devices know where to send data, similar to how a house needs a street address to receive mail.
+
+- **IP Address**: A numeric label like `192.168.1.5` that identifies a device on a network.
+- **Subnet Mask**: Splits an IP address into two parts, the *network* portion and the *host* portion. For example, with a subnet mask of `255.255.255.0`, the first three numbers (`192.168.1`) identify the network, and the last number (`.5`) identifies the specific device.
+- **Subnetting**: The process of dividing one large network into smaller sub-networks. For example, an office might split `192.168.1.0/24` into separate subnets for the sales team (`192.168.1.0/25`) and the engineering team (`192.168.1.128/25`) to keep their traffic organized and isolated.
+- This addressing scheme is used at **Layer 3 (Network)** of the OSI model, where routers use IP addresses to forward packets toward their destination.
+
+#### **Default Gateways and Routing**
+
+- **Default Gateway**: The IP address of the router that a device sends traffic to whenever the destination is *outside* its local network. Think of it as the "front door" out of your home network and onto the internet.
+  - Example: Your laptop (`192.168.1.10`) wants to reach `google.com`. Since Google isn't on your local network, your laptop sends the request to its default gateway (e.g., `192.168.1.1`), which is usually your router.
+- **Static Routes**: Manually configured paths that tell a router how to reach a specific network. For example, a network administrator might add a rule saying "to reach `10.0.5.0/24`, send traffic through `10.0.0.1`."
+- Routing happens at **Layer 3**, working alongside IP addressing to make sure packets take the correct path across multiple networks.
+
+#### **Routers and Switches**
+
+- **Routers (Layer 3)**: Connect *different* networks together and use IP addresses to decide where to forward traffic. A home router connects your local network (LAN) to your internet service provider's network (WAN).
+- **Switches (Layer 2)**: Connect devices *within the same* network and use MAC addresses (hardware addresses) to deliver data to the correct device. For example, when your laptop sends a print job to a printer on the same office network, the switch reads the printer's MAC address and forwards the data directly to it.
+- **Putting it together**: Routers typically sit *between* subnets (directing traffic between networks), while switches sit *within* a subnet (directing traffic between devices on the same network). This mirrors the OSI model, where switches operate at Layer 2 and routers operate at Layer 3.
+
+---
 
 ### References
 
@@ -60,4 +80,4 @@ Additional concepts covered:
 
 ### AI usage
 
-I used an AI assistant (Claude) to quickly refresh my memory of networking concepts I had learned before 42 but had partly forgotten, mainly subnetting and routing calculations.
+I used AI Claude simply to refresh my memory on networking concepts I had learned before 42 but had forgotten a bit, mainly subnetting and routing calculations and for polishing the README.md.
