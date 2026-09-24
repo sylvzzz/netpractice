@@ -50,6 +50,8 @@ The OSI (Open Systems Interconnection) model is a 7-layer framework that describ
 | 2 | Data Link | An Ethernet switch reading MAC addresses on your LAN |
 | 1 | Physical | Your Ethernet cable plugged into your PC |
 
+---
+
 #### **TCP/IP Addressing and Subnetting**
 
 Every device on a network needs a unique **IP address** so other devices know where to send data, similar to how a house needs a street address to receive mail.
@@ -59,12 +61,16 @@ Every device on a network needs a unique **IP address** so other devices know wh
 - **Subnetting**: The process of dividing one large network into smaller sub-networks. For example, an office might split `192.168.1.0/24` into separate subnets for the sales team (`192.168.1.0/25`) and the engineering team (`192.168.1.128/25`) to keep their traffic organized and isolated.
 - This addressing scheme is used at **Layer 3 (Network)** of the OSI model, where routers use IP addresses to forward packets toward their destination.
 
+---
+
 #### **Default Gateways and Routing**
 
 - **Default Gateway**: The IP address of the router that a device sends traffic to whenever the destination is *outside* its local network. Think of it as the "front door" out of your home network and onto the internet.
   - Example: Your laptop (`192.168.1.10`) wants to reach `google.com`. Since Google isn't on your local network, your laptop sends the request to its default gateway (e.g., `192.168.1.1`), which is usually your router.
 - **Static Routes**: Manually configured paths that tell a router how to reach a specific network. For example, a network administrator might add a rule saying "to reach `10.0.5.0/24`, send traffic through `10.0.0.1`."
 - Routing happens at **Layer 3**, working alongside IP addressing to make sure packets take the correct path across multiple networks.
+
+---
 
 #### **Routers and Switches**
 
